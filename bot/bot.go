@@ -34,5 +34,13 @@ func Start() {
 }
 
 func messageHandler(s *discordgo.Session, m *discordgo.MessageCreate) {
-
+	if m.Author.ID == BotId {
+		return
+	}
+	if m.Content == config.BOT_PREFIX+"quoi" {
+		_, _ = s.ChannelMessageSend(m.ChannelID, "feur")
+	}
+	if m.Author.ID == "435053014093529099" {
+		_, _ = s.ChannelMessageSend(m.ChannelID, "Il est le créateur !")
+	}
 }
